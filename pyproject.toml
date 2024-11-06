@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "godmode"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+    "streamlit>=1.39.0",
+    "openai>=1.54.0",
+    "tenacity>=8.0.0",
+    "asyncio>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.3",
+    "pytest-cov>=6.0.0",
+    "black>=24.8.0",
+    "isort>=5.13.2",
+    "bump2version>=1.0.0"
+]
+
+[project.scripts]
+transcribe = "godmode.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["godmode", "godmode.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "--cov --no-cov-on-fail"
+
+[tool.coverage.run]
+source = ["src/godmode"]
+branch = true
+relative_files = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == '__main__':",
+    "raise NotImplementedError",
+    "pass",
+]
+show_missing = true
+fail_under = 80
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
