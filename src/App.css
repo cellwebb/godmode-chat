@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+}
+
+.chat-box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.chat-message {
+  margin: 10px 0;
+}
+
+.chat-message.user {
+  text-align: right;
+  color: blue;
+}
+
+.chat-message.assistant {
+  text-align: left;
+  color: green;
+}
+
+input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+}
